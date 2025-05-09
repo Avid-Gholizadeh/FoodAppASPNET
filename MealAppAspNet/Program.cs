@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IWebHostEnvironment>(builder.Environment);
 
 // Configure MongoDB settings
 // builder.Services.Configure<MongoDbSettings>(

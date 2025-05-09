@@ -2,6 +2,7 @@ using MealAppAspNet.Data;
 using MealAppAspNet.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace MealAppAspNet.Controllers;
 
@@ -31,7 +32,7 @@ public class MealsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Meal>> Create([FromForm] string title, [FromForm] string description, [FromForm] DateTime date, [FromForm] decimal price, IFormFile image)
+    public async Task<ActionResult<Meal>> Create([FromForm] string name, [FromForm] string description, [FromForm] DateTime date, [FromForm] decimal price, IFormFile image)
     {
         if (image != null)
         {
@@ -50,11 +51,11 @@ public class MealsController : ControllerBase
 
             var meal = new Meal
             {
-                Title = title,
+                Name = name,
                 Description = description,
                 Date = date,
                 Price = price,
-                ImageUrl = $"uploads/{fileName}"
+                Image = $"uploads/{fileName}"
             };
 
             _context.Meals.Add(meal);
@@ -66,7 +67,7 @@ public class MealsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromForm] string title, [FromForm] string description, [FromForm] DateTime date, [FromForm] decimal price, IFormFile image)
+    public async Task<IActionResult> Update(int id, [FromForm] string name, [FromForm] string description, [FromForm] DateTime date, [FromForm] decimal price, IFormFile? image)
     {
         var meal = await _context.Meals.FindAsync(id);
         if (meal == null) return NotFound();
@@ -86,10 +87,10 @@ public class MealsController : ControllerBase
                 await image.CopyToAsync(stream);
             }
 
-            meal.ImageUrl = $"uploads/{fileName}";
+            meal.Image = $"uploads/{fileName}";
         }
 
-        meal.Title = title;
+        meal.Name = name;
         meal.Description = description;
         meal.Date = date;
         meal.Price = price;
@@ -103,6 +104,15 @@ public class MealsController : ControllerBase
     {
         var meal = await _context.Meals.FindAsync(id);
         if (meal == null) return NotFound();
+
+        if (!string.IsNullOrEmpty(meal.Image))
+        {
+            var filePath = Path.Combine(_environment.WebRootPath, meal.Image.TrimStart('/'));
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
+        }
 
         _context.Meals.Remove(meal);
         await _context.SaveChangesAsync();

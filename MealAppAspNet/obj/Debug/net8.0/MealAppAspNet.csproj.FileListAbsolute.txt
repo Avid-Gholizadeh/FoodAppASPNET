@@ -139,3 +139,4 @@
 /Users/leo/Desktop/E/web/calidadsoft document learning/FoodAppASPNET/MealAppAspNet/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/leo/Desktop/E/web/calidadsoft document learning/FoodAppASPNET/MealAppAspNet/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/leo/Desktop/E/web/calidadsoft document learning/FoodAppASPNET/MealAppAspNet/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
+/Users/leo/Desktop/E/web/calidadsoft document learning/FoodAppASPNET/MealAppAspNet/obj/Debug/net8.0/MealAppAspNet.sourcelink.json

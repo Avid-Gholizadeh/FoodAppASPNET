@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MealAppAspNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+729d4d99addc8896534c54562689c9dae5dd85e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("MealAppAspNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MealAppAspNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
