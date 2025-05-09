@@ -1,0 +1,6 @@
+@MealAppAspNet_HostAddress = http://localhost:3000
+
+GET {{MealAppAspNet_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
